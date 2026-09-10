@@ -1,0 +1,199 @@
+/* ---------------------------------------------------------------------------
+   গ্যাজেট বাজার — গ্লোবাল স্টাইল
+   ফন্ট সম্পূর্ণ সেল্ফ-হোস্টেড (কোনো এক্সটার্নাল নেটওয়ার্ক কল নেই → Vercel বিল্ড সেফ)
+--------------------------------------------------------------------------- */
+
+/* Anek Bangla (ভ্যারিয়েবল, ডিসপ্লে/হেডিং) */
+@font-face {
+  font-family: 'Anek Bangla';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/anek-bangla-bengali.woff2') format('woff2');
+  unicode-range: U+0980-09FF, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Anek Bangla';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/anek-bangla-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Hind Siliguri (বডি টেক্সট) */
+@font-face {
+  font-family: 'Hind Siliguri';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/hind-siliguri-bengali-400.woff2') format('woff2');
+  unicode-range: U+0980-09FF, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Hind Siliguri';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/hind-siliguri-bengali-500.woff2') format('woff2');
+  unicode-range: U+0980-09FF, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Hind Siliguri';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/hind-siliguri-bengali-600.woff2') format('woff2');
+  unicode-range: U+0980-09FF, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Hind Siliguri';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/hind-siliguri-bengali-700.woff2') format('woff2');
+  unicode-range: U+0980-09FF, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Hind Siliguri';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/hind-siliguri-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+2000-206F, U+2122, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hind Siliguri';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/hind-siliguri-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+2000-206F, U+2122, U+FEFF, U+FFFD;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* বাংলা টেক্সটের লাইন-হাইট একটু বেশি রাখলে পড়তে সুবিধা */
+  p,
+  li,
+  td,
+  th,
+  label,
+  button,
+  input,
+  select,
+  textarea {
+    line-height: 1.75;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    line-height: 1.35;
+  }
+  ::selection {
+    @apply bg-brand-600 text-white;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px; /* iOS অটো-জুম বন্ধ রাখে */
+  }
+}
+
+@layer components {
+  .container-gb {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .card {
+    @apply rounded-2xl border border-ink-200/80 bg-white shadow-card;
+  }
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl font-semibold transition
+      active:scale-[.97] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-lift hover:bg-brand-700;
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 text-ink-900 hover:bg-accent-400;
+  }
+  .btn-wa {
+    @apply btn bg-wa text-white hover:bg-wa-dark;
+  }
+  .btn-ghost {
+    @apply btn border border-ink-200 bg-white text-ink-700 hover:border-brand-300 hover:text-brand-700;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700;
+  }
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-ink-900 outline-none
+      transition placeholder:text-ink-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-100;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink-700;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition;
+  }
+  .badge-soft {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-xl bg-ink-200;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* সূক্ষ্ম গ্লাস ইফেক্ট (হেডার) */
+.glass {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* প্রিন্ট/রিডিউসড মোশন */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
